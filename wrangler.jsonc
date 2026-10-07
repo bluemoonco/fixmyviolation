@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers config for fixmyviolation.com (static site, no build step)
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fixmyviolation",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./public",
+    // /services serves services.html, /about/ serves about/index.html
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}
