@@ -1,15 +1,13 @@
 # fixmyviolation.com
 
-Static site on Cloudflare Workers; every commit to `main` auto-deploys.
+Static Tampa Bay overgrown-property cleanup website: 25 HTML pages, nine process guides, seven jurisdiction guides, 30 FAQs and a cleanup request form without file uploads.
 
-- `public/` is the website. Put the finished files here. No build step.
-- `wrangler.jsonc` holds the Cloudflare settings.
-- `public/index.html` and `public/404.html` are placeholders (marked `noindex`) - replace them with the real site.
-- Clean URLs work: `services.html` is served at `/services`, `about/index.html` at `/about/`.
+The existing Cloudflare Workers Static Assets configuration serves `public/`. Commits to `main` auto-deploy through the repository's configured Cloudflare integration. No application build step is needed; keep `wrangler.jsonc`.
 
-## Going live checklist
+- `public/` — deployable website, sitemap, robots, llms, headers and assets.
+- `public/config.js` — add the business's Web3Forms public access key to activate online submissions. Until configured, the form directs visitors to call 813-671-2757.
+- `README-DEPLOY.md` — deployment/configuration instructions, analytics placeholder and launch checklist.
+- `QA-REPORT.md` — checks performed and remaining browser/Lighthouse verification.
+- `tools/` — optional authoring and QA scripts; not run by the host.
 
-1. Upload the real site into `public/` (keep `404.html`), commit to `main`.
-2. Check the deploy in Workers & Pages -> fixmyviolation.
-3. Remove `noindex` from the real pages, add `sitemap.xml` and `robots.txt`.
-4. Submit https://fixmyviolation.com/sitemap.xml in Google Search Console and Bing.
+No photo upload or paid attachment feature is included. The unfinished parent-service attribution is omitted until the approved name is supplied.
