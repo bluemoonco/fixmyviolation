@@ -5,7 +5,7 @@ Static Tampa Bay overgrown-property cleanup website: 25 HTML pages, nine process
 The existing Cloudflare Workers Static Assets configuration serves `public/`. Commits to `main` auto-deploy through the repository's configured Cloudflare integration. No application build step is needed; keep `wrangler.jsonc`.
 
 - `public/` — deployable website, sitemap, robots, llms, headers and assets.
-- `public/config.js` — add the business's Web3Forms public access key to activate online submissions. Until configured, the form directs visitors to call 813-671-2757.
+- `public/config.js` — add the business's Web3Forms public access key to activate online submissions. Until configured, the form directs visitors to the click-to-call button.
 - `README-DEPLOY.md` — deployment/configuration instructions, analytics placeholder and launch checklist.
 - `QA-REPORT.md` — checks performed and remaining browser/Lighthouse verification.
 - `tools/` — optional authoring and QA scripts; not run by the host.

@@ -5,7 +5,7 @@
 - 25 generated HTML pages; every page has a unique title and meta description and exactly one H1.
 - Every internal link, local asset reference and local fragment target resolves.
 - All JSON-LD blocks parse; 30 FAQ answers have corresponding visible question-and-answer content.
-- Visible form controls have explicit associated labels. No public email address was found. Business phone occurrences in visible HTML are click-to-call links.
+- Visible form controls have explicit associated labels. No public email address was found. The business number is not printed anywhere; all calls go through click-to-call buttons whose tel: link is set by site.v3.js.
 - JavaScript syntax validation passed (`node --check`).
 - Mock-transport form behavior passed: missing-key blocking, UTM/page source, deadline dates yesterday/today/one/seven/eight days away/blank, success-only redirect, duplicate-submit prevention, network failure, honeypot and the absence of attachment handling.
 - Sample design-token contrast checks: muted text/paper 5.00:1; muted text/pale panels 4.68:1; CTA text/yellow 11.08:1; secondary hero text/green 7.72:1.
@@ -26,7 +26,7 @@ From this package directory:
 
 ```sh
 python tools/check_site.py
-node --check public/assets/site.v2.js
+node --check public/assets/site.v3.js
 node tools/test_form.cjs
 ```
 

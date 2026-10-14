@@ -2,6 +2,10 @@
   'use strict';
   document.documentElement.classList.add('js');
   const config = window.FMV_CONFIG || {};
+  // Click-to-call: the number is assembled here so it never appears as text in the HTML.
+  const callHref = 'tel:+1' + ['727','644','9200'].join('');
+  const wireCalls = root => root.querySelectorAll('a[data-call]').forEach(link => { link.href = callHref; });
+  wireCalls(document);
   const storage = {
     get(key) { try { return sessionStorage.getItem(key); } catch { return null; } },
     set(key, value) { try { sessionStorage.setItem(key, value); } catch { /* Navigation still works. */ } },
@@ -56,7 +60,7 @@
     utmNames.forEach(name => {form.elements.namedItem(name).value = attribution[name];});
     if (!configured) {
       status.hidden = false;
-      status.innerHTML = '<p>For cleanup requests, please call <a href="tel:+18136712757">813-671-2757</a>. Online requests are temporarily unavailable.</p>';
+      status.innerHTML = `<p>For cleanup requests, please <a href="${callHref}">call us</a>. Online requests are temporarily unavailable.</p>`;
       button.disabled = true; button.textContent = 'Please call to request cleanup';
     } else { button.disabled = false; }
     const updateDeadline = () => {
@@ -88,7 +92,7 @@
         storage.set('fmv_received',String(Date.now()));
         location.assign('/thank-you/?received=1');
       } catch {
-        status.innerHTML = '<p>We could not confirm delivery. Your details are still here. Please call <a href="tel:+18136712757">813-671-2757</a> before sending again, especially if your deadline is close.</p>';
+        status.innerHTML = `<p>We could not confirm delivery. Your details are still here. Please <a href="${callHref}">call us</a> before sending again, especially if your deadline is close.</p>`;
         status.focus(); button.disabled = false; button.textContent = 'Send cleanup request'; form.dataset.sending = 'false';
       } finally { clearTimeout(timer); }
     });
@@ -126,6 +130,7 @@
       document.body.append(dialog);
       dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
       dialog.addEventListener('close',()=> {document.body.classList.remove('modal-open'); if (trigger) trigger.focus();});
+      wireCalls(dialog);
       initializeForm(dialog.querySelector('.lead-form'),location.pathname);
       dialog.showModal(); document.body.classList.add('modal-open');
     } catch { location.assign(link.href); }

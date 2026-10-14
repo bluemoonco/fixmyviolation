@@ -51,7 +51,7 @@ Use Cloudflare’s dashboard-provided snippet/token; no token has been invented.
 ## Launch checks
 
 - Test the homepage, guide, local-code, FAQ and form pages at 320, 390, 768 and 1440 px. Check 200% zoom, keyboard navigation, dialog focus/escape, screen-reader labels and reduced motion.
-- Confirm click-to-call reaches **813-671-2757**. Government contact numbers on some guides are separately identified.
+- Confirm the "Call now" buttons dial **727-644-9200** on a phone. The number is never printed on the site: `public/assets/site.v3.js` sets every `a[data-call]` link's tel: href (change it there). Without JavaScript the buttons open the request form. Government contact numbers on some guides are separately identified.
 - Check deadline values: yesterday, today, seven days away, eight days away and blank.
 - Test required fields, provider failure, success redirect and actual inbox receipt. Check UTM values from a landing page through both modal and full-page form.
 - Verify HTTPS, security headers, real 404 status, canonical URLs and social preview after DNS is active.
@@ -64,6 +64,6 @@ Use Cloudflare’s dashboard-provided snippet/token; no token has been invented.
 
 The Python authoring script `tools/build_site.py` regenerates the already-delivered HTML when you choose to edit shared templates or content. It uses only Python’s standard library. `tools/check_site.py` uses lxml for structural checks; it is not a deployment dependency. `tools/make_og.py` uses Pillow to make the deterministic social card; it is not loaded on website pages.
 
-Assets are versioned (`site.v1.css`, `site.v2.js`, `og.v1.png`) and served with one-year immutable caching. When changing them, increment their filenames and update HTML/template references. `config.js` is outside `/assets/` and uses `no-cache`, allowing the form key to be updated without an immutable cache. HTML uses Cloudflare’s normal revalidation behavior.
+Assets are versioned (`site.v2.css`, `site.v3.js`, `og.v2.png`) and served with one-year immutable caching. When changing them, increment their filenames and update HTML/template references. `config.js` is outside `/assets/` and uses `no-cache`, allowing the form key to be updated without an immutable cache. HTML uses Cloudflare’s normal revalidation behavior.
 
 There are nine full process guides, seven jurisdiction guides, a local-code hub, 30-question FAQ, services, request form, thank-you, privacy, home and 404 pages. The sitemap excludes thank-you and 404. Both have `noindex,follow`. JSON-LD includes LocalBusiness without an invented address, six Services, Article on the 16 detailed guides, BreadcrumbList and visible FAQ content.
